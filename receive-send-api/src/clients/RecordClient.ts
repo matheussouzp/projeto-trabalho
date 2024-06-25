@@ -22,4 +22,10 @@ export default class RecordClient {
     const response = await this.client.post('/messages', messageData);
     return response.data;
   }
+
+  public async getMessageById(id: number): Promise<any> {
+    const response = await this.client.get(`/messages/received/${id}`);
+    return response.data;
+  }
+  
 }

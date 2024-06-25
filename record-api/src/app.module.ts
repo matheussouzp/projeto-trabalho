@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { MessageModule } from './message/message.module'; // Ajuste o caminho conforme necessário
+import { MessageModule } from './message/message.module'; 
 import { Message } from './message/message.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql', // ou outro banco de dados que você está usando
+      type: 'mysql', 
       host: 'localhost',
       port: 3306,
       username: 'root',

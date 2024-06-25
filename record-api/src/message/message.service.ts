@@ -31,4 +31,8 @@ export class MessageService {
   async remove(id: number): Promise<void> {
     await this.messageRepository.delete(id);
   }
+
+  async findAllByUserIdReceive(userIdReceive: number): Promise<Message[]> {
+    return await this.messageRepository.find({ where: { user_id_receive: userIdReceive } });
+  }
 }

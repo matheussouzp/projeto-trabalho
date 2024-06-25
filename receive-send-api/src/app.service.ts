@@ -44,4 +44,19 @@ export class AppService {
 
     return savedMessages;
   }
+
+  async getMessage(token: string, userId: number): Promise<any> {
+    const authResponse = await this.userClient.checkAuth(userId.toString(), token);
+
+    if (!authResponse.auth) {
+      throw new UnauthorizedException('User is not authenticated');
+    }
+
+    const messages = await this.recordClient.getMessageById(userId);
+
+    return messages.map(message => ({
+      userId: message.user_id_send,
+      msg: message.message,
+    }));
+  }
 }

@@ -30,4 +30,9 @@ export class MessageController {
   async remove(@Param('id') id: string): Promise<void> {
     return await this.messageService.remove(+id);
   }
+
+  @Get('/received/:userIdReceive')
+  async findAllByUserIdReceive(@Param('userIdReceive') userIdReceive: string): Promise<Message[]> {
+    return await this.messageService.findAllByUserIdReceive(+userIdReceive);
+  }
 }

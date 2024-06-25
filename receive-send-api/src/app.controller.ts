@@ -34,17 +34,12 @@ export class AppController {
     return await this.messageService.processMessages(token, userIdSend, userIdReceive);
   }
 
-  // @Get()
-  // async getMessage(
-  //   @Headers('authorization') authHeader: string,
-  //   @Query('user') userId: string,
-  //   @Body('userIdSend') userIdSend: number,
-  // ): Promise<any> {
-  //   if (!authHeader) {
-  //     throw new UnauthorizedException('Token is missing');
-  //   }
-
-  //   const token = authHeader.split(' ')[1]; // Assume 'Bearer <token>'
-  //   return await this.messageService.sendMessage(token, userIdSend, userIdReceive, message);
-  // }
+  @Get()
+  async getMessage(
+    @Headers('authorization') token: string,
+    @Query('user') userId: number,
+  ): Promise<any> {
+    const authToken = token.split(' ')[1];
+    return await this.messageService.getMessage(authToken, userId);
+  }
 }
